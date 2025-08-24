@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button_view_first_country">View the first country</string>
+    <string name="title_home_screen">Welcome to Pathfinder</string>
+</resources>

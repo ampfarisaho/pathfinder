@@ -1,0 +1,6 @@
+<resources>
+
+    <style name="Theme.Pathfinder" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>
