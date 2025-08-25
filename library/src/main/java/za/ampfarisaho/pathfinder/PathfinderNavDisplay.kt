@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.ContentTransform
 import androidx.compose.animation.SizeTransform
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -44,7 +45,11 @@ fun PathFinderNavDisplay(
 
     val dialog by navigator.dialog.collectAsStateWithLifecycle()
     val backStack = rememberNavBackStack(*elements)
-    navigator.setBackStack(backStack)
+
+    DisposableEffect(backStack) {
+        navigator.setBackStack(backStack)
+        onDispose {}
+    }
 
     NavDisplay(
         modifier = modifier,
