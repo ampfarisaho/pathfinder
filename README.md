@@ -2,7 +2,7 @@
 
 Pathfinder is a lightweight Jetpack Compose navigation library built on Navigation 3. It simplifies
 navigation in Android apps by providing a clear, type-safe, and extensible API. Pathfinder handles
-screen navigation, dialogs, activity contracts, and back stack management.
+screen navigation, dialogs, and back stack management.
 
 ## Features
 
@@ -332,7 +332,6 @@ object Home : ComposeScreen() {
 * `newScreenChain(vararg screens: Screen)` – Replace the back stack.
 * `showDialog(dialog: Dialog)` – Show a dialog.
 * `dismissDialog()` – Dismiss the current dialog.
-* `launch(key: String, input: I, onResult: (O) -> Unit)` – Launch an activity contract.
 * `sendResult(key: String, data: Any?)` – Send a result to a previously registered listener.
 * `setResultListener(key: String, listener: ResultListener<R>)` – Listen for a result sent with
   `sendResult`. Returns a `ResultListenerHandler` that can be used to remove the listener.
@@ -345,17 +344,15 @@ object Home : ComposeScreen() {
 
 ## Sample Project / Demo
 
-To see Pathfinder in action, including screen navigation, dialogs, and activity result contracts,
-you can check out the [sample](https://github.com/ampfarisaho/pathfinder/tree/main/sample) project.
+To see Pathfinder in action, you can check out the [sample](https://github.com/ampfarisaho/pathfinder/tree/main/sample) project.
 
 The sample demonstrates:
 
 * Compose screens and dialogs (`ComposeScreen`, `Dialog`)
 * Navigation using `Router` and `PathfinderNavigator`
-* Using `Router.launch` with single/multiple permissions contracts
 * Integration with Hilt for dependency injection
 * Back stack management and configuration change handling
-* Sending and recieving results from another screen
+* Sending and receiving results from another screen
 * Passing arguments to screens and view models
 
 ## Credits
