@@ -1,5 +1,6 @@
 package za.ampfarisaho.pathfinder
 
+import androidx.activity.ComponentActivity
 import androidx.compose.runtime.snapshotFlow
 import androidx.navigation3.runtime.NavBackStack
 import kotlinx.coroutines.CoroutineScope
@@ -9,13 +10,12 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import za.ampfarisaho.pathfinder.activity.PathfinderActivity
 import za.ampfarisaho.pathfinder.content.ActivityScreen
 import za.ampfarisaho.pathfinder.content.ComposeScreen
 import za.ampfarisaho.pathfinder.content.Dialog
 import za.ampfarisaho.pathfinder.content.Screen
 
-class PathfinderNavigator(private val activity: PathfinderActivity) : Navigator {
+class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
 
     private val _dialog = MutableStateFlow<Dialog?>(null)
     val dialog: StateFlow<Dialog?> = _dialog
@@ -79,7 +79,6 @@ class PathfinderNavigator(private val activity: PathfinderActivity) : Navigator 
                 is ClearStack -> clearStack()
                 is ShowDialog -> _dialog.value = command.dialog
                 is DismissDialog -> _dialog.value = null
-                is Launch<*, *> -> activity.launch(command.key, command.input, command.onResult)
             }
         }
     }

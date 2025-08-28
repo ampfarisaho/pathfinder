@@ -1,10 +1,9 @@
 package za.ampfarisaho.pathfinder.uix
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions
-import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -20,15 +19,13 @@ import za.ampfarisaho.pathfinder.PathFinderNavDisplay
 import za.ampfarisaho.pathfinder.Pathfinder
 import za.ampfarisaho.pathfinder.PathfinderNavigator
 import za.ampfarisaho.pathfinder.Router
-import za.ampfarisaho.pathfinder.activity.ActivityResultContractRegistry
-import za.ampfarisaho.pathfinder.activity.PathfinderActivity
 import za.ampfarisaho.pathfinder.navigation.Home
 import za.ampfarisaho.pathfinder.navigation.Settings
 import za.ampfarisaho.pathfinder.provider.RouterProvider
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : PathfinderActivity() {
+class MainActivity : ComponentActivity() {
 
     @Inject lateinit var pathfinder: Pathfinder<Router>
 
@@ -37,12 +34,6 @@ class MainActivity : PathfinderActivity() {
 
     private val navigator: PathfinderNavigator by lazy {
         PathfinderNavigator(this)
-    }
-
-    override fun registerContracts(registry: ActivityResultContractRegistry) {
-        registry.register("RequestPermission", RequestPermission())
-        registry.register("RequestPermissions", RequestMultiplePermissions())
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
