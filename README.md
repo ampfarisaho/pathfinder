@@ -1,13 +1,15 @@
 ## What is it?
 
-Pathfinder is a lightweight Jetpack Compose navigation library built on Navigation 3. It simplifies navigation in Android apps by providing a clear, type-safe, and extensible API. Pathfinder handles screen navigation, dialogs, activity contracts, and back stack management.
+Pathfinder is a lightweight Jetpack Compose navigation library built on Navigation 3. It simplifies
+navigation in Android apps by providing a clear, type-safe, and extensible API. Pathfinder handles
+screen navigation, dialogs, activity contracts, and back stack management.
 
 ## Features
 
 * Type-safe navigation using `ComposeScreen`, `ActivityScreen`, and `Dialog`.
 * Simple back stack management.
-* Safe execution of navigation commands even when the activity or navigator is temporarily unavailable.
-* Support for activity result contracts via `PathfinderActivity`.
+* Safe execution of navigation commands even when the activity or navigator is temporarily
+  unavailable.
 * Works with or without dependency injection frameworks like Hilt.
 * Compose integration with `RouterProvider` and `PathFinderNavDisplay`.
 
@@ -56,10 +58,10 @@ dependencies {
 
 ### Initialize Pathfinder
 
-Inside your `PathfinderActivity` (e.g. `MainActivity`):
+Inside your `ComponentActivity` (e.g. `MainActivity`):
 
 ```kotlin
-class MainActivity : PathfinderActivity() {
+class MainActivity : ComponentActivity() {
 
     private val pathfinder: Pathfinder = Pathfinder.create(Router())
 
@@ -100,7 +102,8 @@ override fun onResume() {
 }
 ```
 
-Detach the navigator in `onPause` to prevent navigation commands from executing when the app is not visible:
+Detach the navigator in `onPause` to prevent navigation commands from executing when the app is not
+visible:
 
 ```kotlin
 override fun onPause() {
@@ -109,8 +112,11 @@ override fun onPause() {
 }
 ```
 
-> **Important:** Any navigation commands issued while the navigator is detached (i.e. between `onPause` and `onResume`) are queued and will automatically execute in order when the navigator is re-attached during `onResume`. This ensures that no navigation operations are lost even if they occur while the app is not visible.
-> 
+> **Important:** Any navigation commands issued while the navigator is detached (i.e. between
+`onPause` and `onResume`) are queued and will automatically execute in order when the navigator is
+> re-attached during `onResume`. This ensures that no navigation operations are lost even if they
+> occur while the app is not visible.
+>
 
 ### Define Screens
 
@@ -118,7 +124,7 @@ override fun onPause() {
 
 ```kotlin
 object AppInfo : ActivityScreen() {
-    override fun createIntent(context: Context) = 
+    override fun createIntent(context: Context) =
         Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
             data = "package:$packageName".toUri()
         }
@@ -172,7 +178,7 @@ fun HomeScreen() {
     val router = LocalRouter.current
     Column {
         Button(onClick = {
-        	router.navigateTo(Products)
+            router.navigateTo(Products)
         }) {
             Text("Products")
         }
@@ -187,8 +193,8 @@ fun HomeScreen() {
 fun ProductListScreen() {
     val router = LocalRouter.current
     Column {
-        Button(onClick = { 
-        	router.showDialog(BottomSheet("These are Product details")) 
+        Button(onClick = {
+            router.showDialog(BottomSheet("These are Product details"))
         }) {
             Text("Show Details")
         }
@@ -230,7 +236,7 @@ abstract class AppModule {
 
 ```kotlin
 @AndroidEntryPoint
-class MainActivity : PathfinderActivity() {
+class MainActivity : ComponentActivity() {
     @Inject lateinit var pathfinder: Pathfinder<Router>
 }
 ```
@@ -253,99 +259,10 @@ class ProductsViewModel @Inject constructor(
 }
 ```
 
-## Using `Router.launch` for Activity Result Contracts
-
-Pathfinder allows you to safely launch **ActivityResultContracts** from your router, without manually handling `ActivityResultLauncher`.
-
-### Step 1: Register Contracts in Your Activity
-
-Override `registerContracts()` in your `PathfinderActivity` (e.g. `MainActivity`) to register all contracts you plan to use:
-
-```kotlin
-override fun registerContracts(registry: ActivityResultContractRegistry) {
-    registry.register("RequestPermission", RequestPermission())
-    registry.register("RequestPermissions", RequestMultiplePermissions())
-    registry.register("PickFile", ActivityResultContracts.GetContent())
-}
-```
-
-* Each contract is registered with a unique key.
-* Pathfinder will automatically create launchers for these contracts and handle result callbacks.
-
-### Step 2: Launch Contracts via `Router.launch`
-
-You can now call `launch` from anywhere you have access to the `Router`.
-
-#### Example: Request a Single Permission
-
-```kotlin
-private fun requestSinglePermission() {
-    router.launch(
-        key = "RequestPermission",
-        input = Manifest.permission.CAMERA,
-        onResult = { isGranted: Boolean ->
-            if (isGranted) {
-                // Permission granted, proceed with action
-            } else {
-                // Permission denied, handle accordingly
-            }
-        }
-    )
-}
-```
-
-#### Example: Request Multiple Permissions
-
-```kotlin
-private val multiplePermissions = arrayOf(
-    Manifest.permission.READ_CONTACTS,
-    Manifest.permission.ACCESS_FINE_LOCATION
-)
-
-private fun requestMultiplePermissions() {
-    router.launch(
-        key = "RequestPermissions",
-        input = multiplePermissions,
-        onResult = { result: Map<String, Boolean> ->
-            val isGranted = result.all { entry -> entry.value }
-            if (isGranted) {
-                // All permissions granted
-            } else {
-                // Handle denied permissions
-            }
-        }
-    )
-}
-```
-
-### Example: Pick a file
-
-```kotlin
-private fun pickFile() {
-    router.launch(
-        key = "PickFile",
-        input = "*/*", // MIME type filter, e.g. "*/*" for all files
-        onResult = { uri: Uri? ->
-            if (uri != null) {
-                // File was selected, handle the Uri
-            } else {
-                // User canceled
-            }
-        }
-    )
-}
-```
-
-### Important
-
-* The `key` must match the one used when registering the contract.
-* The `input` type must match the contract’s expected input.
-* The `onResult` callback receives the contract result type.
-* Pathfinder internally manages the `ActivityResultLauncher` lifecycle, so you don’t need to manually handle registration or lifecycle events.
-
 ## Passing Results Between Screens
 
-Pathfinder allows screens to send and receive results in a type-safe manner, similar to `startActivityForResult`, but fully integrated with the router.
+Pathfinder allows screens to send and receive results in a type-safe manner, similar to
+`startActivityForResult`, but fully integrated with the router.
 
 ### Step 1: Set a Result Listener
 
@@ -363,7 +280,6 @@ private fun navigateToNextScreen() {
 * `"result_message"` is the unique key used to identify the result.
 * The lambda receives the result when the target screen calls `sendResult`.
 
-
 ### Step 2: Send a Result
 
 On the destination screen, send the result back:
@@ -380,10 +296,12 @@ router.sendResult(
 
 ## Why Screens Should Be `@Serializable`
 
-The Pathfinder back stack is created using Navigation 3 `rememberNavBackStack`, which persists state across configuration changes (like rotation).
+The Pathfinder back stack is created using Navigation 3 `rememberNavBackStack`, which persists state
+across configuration changes (like rotation).
 
 * To support this persistence, each screen must have a unique key that implements `NavKey`.
-* Additionally, any data contained in the screen must be serializable using Kotlin Serialization. This ensures the back stack is saved and restored correctly when the activity is recreated.
+* Additionally, any data contained in the screen must be serializable using Kotlin Serialization.
+  This ensures the back stack is saved and restored correctly when the activity is recreated.
 
 ```kotlin
 @Serializable
@@ -394,10 +312,12 @@ object Home : ComposeScreen() {
 ```
 
 * `Home` implements `NavKey` (inherited from `Screen`), providing a unique `screenKey`.
-* Marking it `@Serializable` ensures that the back stack can be safely restored on configuration changes.
+* Marking it `@Serializable` ensures that the back stack can be safely restored on configuration
+  changes.
 
 > **Rule of Thumb:**
-> Any screen that is part of the back stack and should survive configuration changes must implement `NavKey` and be `@Serializable`.
+> Any screen that is part of the back stack and should survive configuration changes must implement
+`NavKey` and be `@Serializable`.
 >
 
 ## API Reference
@@ -414,7 +334,8 @@ object Home : ComposeScreen() {
 * `dismissDialog()` – Dismiss the current dialog.
 * `launch(key: String, input: I, onResult: (O) -> Unit)` – Launch an activity contract.
 * `sendResult(key: String, data: Any?)` – Send a result to a previously registered listener.
-* `setResultListener(key: String, listener: ResultListener<R>)` – Listen for a result sent with `sendResult`. Returns a `ResultListenerHandler` that can be used to remove the listener.
+* `setResultListener(key: String, listener: ResultListener<R>)` – Listen for a result sent with
+  `sendResult`. Returns a `ResultListenerHandler` that can be used to remove the listener.
 
 ### `Pathfinder`
 
@@ -422,14 +343,10 @@ object Home : ComposeScreen() {
 * `create(customRouter: T)` – Creates Pathfinder with a custom router.
 * `getNavigatorHolder()` – Get the `NavigatorHolder` to attach/detach navigator.
 
-### `PathfinderActivity`
-
-* `launch(key: String, input: I, callback: (O) -> Unit)` – Launch registered contracts.
-* `registerContracts(registry: ActivityResultContractRegistry)` – Abstract method to register contracts.
-
 ## Sample Project / Demo
 
-To see Pathfinder in action, including screen navigation, dialogs, and activity result contracts, you can check out the [sample](https://github.com/ampfarisaho/pathfinder/tree/main/sample) project.
+To see Pathfinder in action, including screen navigation, dialogs, and activity result contracts,
+you can check out the [sample](https://github.com/ampfarisaho/pathfinder/tree/main/sample) project.
 
 The sample demonstrates:
 
@@ -443,9 +360,11 @@ The sample demonstrates:
 
 ## Credits
 
-Pathfinder is inspired by [Cicerone](https://github.com/terrakok/Cicerone), created by Konstantin Tskhovrebok ([@terrakok](https://github.com/terrakok/Cicerone)).
+Pathfinder is inspired by [Cicerone](https://github.com/terrakok/Cicerone), created by Konstantin
+Tskhovrebok ([@terrakok](https://github.com/terrakok/Cicerone)).
 
-The architectural approach is intentionally similar, and I extend my thanks to Konstantin for the original work, which laid the foundation for Pathfinder.
+The architectural approach is intentionally similar, and I extend my thanks to Konstantin for the
+original work, which laid the foundation for Pathfinder.
 
 ## License
 

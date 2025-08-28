@@ -75,16 +75,5 @@ class Router : BaseRouter() {
     fun dismissDialog() {
         executeCommands(DismissDialog)
     }
-
-    /**
-     * Launch an activity contract.
-     *
-     * @param key The key identifying the contract.
-     * @param input Input for the contract.
-     * @param onResult Callback invoked with the contract result.
-     */
-    fun <I, O> launch(key: String, input: I, onResult: (O) -> Unit) {
-        executeCommands(Launch(key, input, onResult))
-    }
 }
 
