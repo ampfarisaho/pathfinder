@@ -56,12 +56,3 @@ data class ShowDialog(val dialog: Dialog) : NavigationCommand
  * Dismiss the currently visible dialog
  */
 object DismissDialog : NavigationCommand
-
-/**
- * Launch an activity result contract, with a unique key, input data, and a callback for the result
- */
-data class Launch<I, O>(
-    val key: String,
-    val input: I,
-    val onResult: (O) -> Unit
-) : NavigationCommand

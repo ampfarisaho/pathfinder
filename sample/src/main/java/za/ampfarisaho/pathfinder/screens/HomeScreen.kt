@@ -9,12 +9,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import za.ampfarisaho.pathfinder.ui.components.ContentBase
 
 @Composable
@@ -43,7 +41,13 @@ private fun HomeScreen(buttons: List<HomeButton>) {
 
 @Composable
 fun HomeScreen(viewModel: HomeViewModel) {
-    val buttons by viewModel.buttons.collectAsStateWithLifecycle()
+    val buttons = listOf(
+        HomeButton(text = "Navigate Screens", onClick = viewModel::navigateToPathOne),
+        HomeButton(text = "Open Result Screen", onClick = viewModel::navigateToResultPath),
+        HomeButton(text = "Open Activity 2", onClick = viewModel::navigateToActivityTwo),
+        HomeButton(text = "Show Dialog", onClick = viewModel::showDialog),
+        HomeButton(text = "Show Bottom Sheet", onClick = viewModel::showBottomSheet)
+    )
     HomeScreen(buttons = buttons)
 }
 
