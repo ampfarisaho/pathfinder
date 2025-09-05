@@ -15,7 +15,7 @@ class NavigationCommandBuffer : NavigatorHolder {
 
     private val mainHandler = Handler(Looper.getMainLooper())
     private val pendingCommands = mutableListOf<Array<out NavigationCommand>>()
-    private var navigator: PathfinderNavigator? = null
+    private var navigator: Navigator? = null
 
     /**
      * Attaches a new navigator and executes any commands that were queued while no navigator was attached.
@@ -24,7 +24,7 @@ class NavigationCommandBuffer : NavigatorHolder {
      *
      * @param navigator The navigator to attach for immediate and future command execution.
      */
-    override fun setNavigator(navigator: PathfinderNavigator) {
+    override fun setNavigator(navigator: Navigator) {
         this.navigator = navigator
         pendingCommands.forEach(navigator::executeCommands)
         pendingCommands.clear()

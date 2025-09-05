@@ -6,7 +6,7 @@ interface NavigatorHolder {
      *
      * @param navigator The navigator to attach for immediate and future command execution.
      */
-    fun setNavigator(navigator: PathfinderNavigator)
+    fun setNavigator(navigator: Navigator)
 
     /**
      * Detaches the current navigator reference.
