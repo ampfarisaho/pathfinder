@@ -16,7 +16,7 @@ import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.SceneStrategy
 import androidx.navigation3.ui.SinglePaneSceneStrategy
 import androidx.navigation3.ui.rememberSceneSetupNavEntryDecorator
-import androidx.navigationevent.NavigationEvent.SwipeEdge
+import androidx.navigationevent.NavigationEventSwipeEdge
 import za.ampfarisaho.pathfinder.content.ComposeScreen
 
 object PathfinderNavDisplayDefaults {
@@ -52,6 +52,7 @@ object PathfinderNavDisplayDefaults {
         )
     }
 
-    val predictivePopTransitionSpec: AnimatedContentTransitionScope<*>.(@SwipeEdge Int) -> ContentTransform =
+    val predictivePopTransitionSpec
+            : AnimatedContentTransitionScope<*>.(NavigationEventSwipeEdge) -> ContentTransform =
         NavDisplay.defaultPredictivePopTransitionSpec
 }

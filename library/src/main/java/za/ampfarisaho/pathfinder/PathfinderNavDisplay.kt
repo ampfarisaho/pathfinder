@@ -15,7 +15,7 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import androidx.navigation3.ui.SceneStrategy
-import androidx.navigationevent.NavigationEvent.SwipeEdge
+import androidx.navigationevent.NavigationEventSwipeEdge
 import za.ampfarisaho.pathfinder.content.ComposeScreen
 
 @Composable
@@ -31,7 +31,7 @@ fun PathFinderNavDisplay(
         PathfinderNavDisplayDefaults.transitionSpec,
     popTransitionSpec: AnimatedContentTransitionScope<*>.() -> ContentTransform =
         PathfinderNavDisplayDefaults.popTransitionSpec,
-    predictivePopTransitionSpec: AnimatedContentTransitionScope<*>.(@SwipeEdge Int) -> ContentTransform =
+    predictivePopTransitionSpec: AnimatedContentTransitionScope<*>.(NavigationEventSwipeEdge) -> ContentTransform =
         PathfinderNavDisplayDefaults.predictivePopTransitionSpec,
     entryProvider: (key: NavKey) -> NavEntry<NavKey> = PathfinderNavDisplayDefaults.entryProvider,
     elements: Array<out ComposeScreen>
