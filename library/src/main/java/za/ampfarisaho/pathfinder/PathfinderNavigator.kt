@@ -34,14 +34,12 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
      */
     private fun updateCurrentScreenKey() {
         CoroutineScope(Dispatchers.Main).launch {
-            if (backStack.isNotEmpty()) {
-                (backStack.last() as? ComposeScreen)?.let { lastScreen ->
-                    _currentScreenKey.emit(lastScreen.screenKey)
-                }
+            (backStack.lastOrNull() as? ComposeScreen)?.let { lastScreen ->
+                _currentScreenKey.emit(lastScreen.screenKey)
             }
 
             snapshotFlow { backStack.toList() }.collect { snapshot ->
-                (snapshot.last() as? ComposeScreen)?.let { lastScreen ->
+                (snapshot.lastOrNull() as? ComposeScreen)?.let { lastScreen ->
                     _currentScreenKey.emit(lastScreen.screenKey)
                 }
             }
