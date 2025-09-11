@@ -3,6 +3,7 @@ package za.ampfarisaho.pathfinder
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.snapshotFlow
 import androidx.navigation3.runtime.NavBackStack
+import androidx.navigation3.runtime.NavKey
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -20,9 +21,9 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
     private val _dialog = MutableStateFlow<Dialog?>(null)
     val dialog: StateFlow<Dialog?> = _dialog
 
-    private var _backStack: NavBackStack? = null
+    private var _backStack: NavBackStack<NavKey>? = null
 
-    private val backStack: NavBackStack
+    private val backStack: NavBackStack<NavKey>
         get() = _backStack
             ?: error("BackStack has not been initialized. Call setBackStack() first.")
 
@@ -51,7 +52,7 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
      *
      * @param backStack The back stack to manage screens.
      */
-    fun setBackStack(backStack: NavBackStack) {
+    fun setBackStack(backStack: NavBackStack<NavKey>) {
         this._backStack = backStack
         updateCurrentScreenKey()
     }
@@ -135,7 +136,7 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
         backStack.popBackStack(screenKey, inclusive)
     }
 
-    private fun NavBackStack.popBackStack(screenKey: String, inclusive: Boolean) {
+    private fun NavBackStack<NavKey>.popBackStack(screenKey: String, inclusive: Boolean) {
         val index = this
             .filterIsInstance<ComposeScreen>()
             .indexOfLast { it.screenKey == screenKey }
