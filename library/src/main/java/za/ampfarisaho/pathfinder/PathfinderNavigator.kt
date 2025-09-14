@@ -75,6 +75,7 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
                 is Replace -> replace(command.screen)
                 is BackToScreen -> backTo(command.screenKey, command.inclusive)
                 is BackToScreenByKey -> backTo(command.screenKey, command.inclusive)
+                is BackByStep -> backByStep(command.steps, command.inclusive)
                 is NewScreenChain -> clearAndSet(*command.screens.toTypedArray())
                 is NewHomeScreenChain -> clearAndSet(*command.screens.toTypedArray())
                 is Back -> pop()
@@ -127,6 +128,26 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
      */
     private fun clearStack() {
         backStack.clear()
+    }
+
+    /**
+     * Navigates back by a specified number of steps in the back stack.
+     *
+     * @param steps the number of screens to pop from the back stack
+     * @param inclusive If true, removes exactly [steps] screens; if false, removes [steps-1] screens.
+     */
+    private fun backByStep(steps: Int, inclusive: Boolean) {
+        if (steps <= 0) {
+            throw IllegalArgumentException("Steps must be positive, got: $steps")
+        }
+
+        val screensToRemove = if (inclusive) steps else steps - 1
+        val safeRemoveCount = screensToRemove.coerceAtMost(backStack.size - 1)
+
+        repeat(safeRemoveCount) {
+            if (backStack.size == 1) return // Keep at least one screen
+            backStack.removeAt(backStack.size - 1)
+        }
     }
 
     /**
