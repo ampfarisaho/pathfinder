@@ -27,6 +27,9 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
         get() = _backStack
             ?: error("BackStack has not been initialized. Call setBackStack() first.")
 
+    val backStackSize: Int
+        get() = backStack.size
+
     private val _currentScreenKey = MutableSharedFlow<String>()
     val currentScreenKey: Flow<String> = _currentScreenKey
 
