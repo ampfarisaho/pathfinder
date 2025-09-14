@@ -47,6 +47,16 @@ class Router : BaseRouter() {
     }
 
     /**
+     * Navigates back by a specified number of steps in the back stack.
+     *
+     * @param steps the number of screens to pop from the back stack
+     * @param inclusive if true, also removes the target screen itself
+     */
+    fun backByStep(steps: Int, inclusive: Boolean) {
+        executeCommands(BackByStep(steps, inclusive))
+    }
+
+    /**
      * Exits the current screen by popping it from the back stack.
      */
     fun exit() {

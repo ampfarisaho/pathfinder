@@ -26,6 +26,11 @@ fun PathThreeScreen() {
             }) {
                 Text(text = "Go to Home By Screen Key")
             }
+            Button(onClick = {
+                router.backByStep(3, inclusive = true)
+            }) {
+                Text(text = "Go to Root Screen By Step")
+            }
             Button(onClick = { router.exit() }) {
                 Text(text = "Go Back")
             }

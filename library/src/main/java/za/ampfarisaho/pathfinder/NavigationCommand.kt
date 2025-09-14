@@ -27,6 +27,12 @@ data class BackToScreen(val screenKey: String, val inclusive: Boolean) : Navigat
 data class BackToScreenByKey(val screenKey: String, val inclusive: Boolean) : NavigationCommand
 
 /**
+ * Navigates back by a specified number of steps in the back stack.
+ * If inclusive is true, also remove the target screen itself
+ */
+data class BackByStep(val steps: Int, val inclusive: Boolean): NavigationCommand
+
+/**
  * Replace the current stack with a new chain of screens
  */
 data class NewScreenChain(val screens: List<Screen>) : NavigationCommand
