@@ -136,11 +136,7 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
      * @param inclusive If true, the target screen is also removed; otherwise it remains.
      */
     private fun backTo(screenKey: String, inclusive: Boolean) {
-        backStack.popBackStack(screenKey, inclusive)
-    }
-
-    private fun NavBackStack<NavKey>.popBackStack(screenKey: String, inclusive: Boolean) {
-        val index = this
+        val index = backStack
             .filterIsInstance<ComposeScreen>()
             .indexOfLast { it.screenKey == screenKey }
 
@@ -149,11 +145,11 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
         }
 
         val removeFrom = if (inclusive) index else index + 1
+        val safeRemoveFrom = removeFrom.coerceAtMost(backStack.size - 1)
 
-        val safeRemoveFrom = removeFrom.coerceAtMost(size - 1)
-        while (size > safeRemoveFrom) {
-            if (size == 1) break // Keep at least one screen
-            removeAt(size - 1)
+        while (backStack.size > safeRemoveFrom) {
+            if (backStack.size == 1) break // Keep at least one screen
+            backStack.removeAt(backStack.size - 1)
         }
     }
 
