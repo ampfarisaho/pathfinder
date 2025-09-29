@@ -326,6 +326,7 @@ object Home : ComposeScreen() {
 
 * `navigateTo(screen: Screen)` – Push a screen onto the back stack.
 * `replaceScreen(screen: Screen)` – Replace the current screen.
+* `backByStep(step: Int, inclusive: Boolean)` - Go back by n screens in the back stack.
 * `backToScreen(screen: Screen, inclusive: Boolean)` – Go back to a specific screen.
 * `backToScreenByKey(screenKey: String, inclusive: Boolean)` – Same as above, by key.
 * `exit()` – Pop the current screen.
