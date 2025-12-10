@@ -27,6 +27,7 @@ local.properties
 
 # IntelliJ files
 .idea
+.idea/
 *.iml
 
 # vi swap files
@@ -37,6 +38,7 @@ local.properties
 
 # gradle directory
 .gradle
+.gradle/
 build/
 buildSrc/build/
 buildSrc/.gradle/
