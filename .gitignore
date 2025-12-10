@@ -1,0 +1,68 @@
+# lint folder
+lint
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+classes/
+gen-external-apklibs/
+
+# maven output folder
+target
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+.classpath
+.project
+.metadata
+.settings
+
+# IntelliJ files
+.idea
+*.iml
+
+# vi swap files
+*.swp
+
+# backup files
+*.bak
+
+# gradle directory
+.gradle
+build/
+buildSrc/build/
+buildSrc/.gradle/
+
+# Android Studio
+.navigation
+captures
+
+# private properties file
+/local.properties
+app/gradle.properties
+
+app/release
+app/build
+
+*.log
+
+\.directory
+
+*.zip
+
+/.gtm/
+
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+
+.kotlin/
