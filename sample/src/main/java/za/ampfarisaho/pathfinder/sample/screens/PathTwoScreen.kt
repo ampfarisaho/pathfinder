@@ -1,16 +1,16 @@
-package za.ampfarisaho.pathfinder.screens
+package za.ampfarisaho.pathfinder.sample.screens
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import za.ampfarisaho.pathfinder.navigation.PathOne
-import za.ampfarisaho.pathfinder.navigation.PathThree
-import za.ampfarisaho.pathfinder.navigation.PathTwo
-import za.ampfarisaho.pathfinder.navigation.Settings
+import za.ampfarisaho.pathfinder.sample.navigation.PathOne
+import za.ampfarisaho.pathfinder.sample.navigation.PathThree
+import za.ampfarisaho.pathfinder.sample.navigation.PathTwo
+import za.ampfarisaho.pathfinder.sample.navigation.Settings
 import za.ampfarisaho.pathfinder.provider.LocalRouter
-import za.ampfarisaho.pathfinder.ui.components.ContentBase
+import za.ampfarisaho.pathfinder.sample.ui.components.ContentBase
 
 @Composable
 fun PathTwoScreen() {

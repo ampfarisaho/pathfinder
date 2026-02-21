@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.uix
+package za.ampfarisaho.pathfinder.sample.uix
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -19,8 +19,8 @@ import za.ampfarisaho.pathfinder.PathFinderNavDisplay
 import za.ampfarisaho.pathfinder.Pathfinder
 import za.ampfarisaho.pathfinder.PathfinderNavigator
 import za.ampfarisaho.pathfinder.Router
-import za.ampfarisaho.pathfinder.navigation.Home
-import za.ampfarisaho.pathfinder.navigation.Settings
+import za.ampfarisaho.pathfinder.sample.navigation.Home
+import za.ampfarisaho.pathfinder.sample.navigation.Settings
 import za.ampfarisaho.pathfinder.provider.RouterProvider
 import javax.inject.Inject
 

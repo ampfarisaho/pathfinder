@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.modular.hilt
+package za.ampfarisaho.pathfinder.sample.injection
 
 import dagger.Module
 import dagger.Provides

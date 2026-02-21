@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.screens
+package za.ampfarisaho.pathfinder.sample.screens
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import za.ampfarisaho.pathfinder.Router
-import za.ampfarisaho.pathfinder.common.CountriesLoader
-import za.ampfarisaho.pathfinder.navigation.PathTwo
+import za.ampfarisaho.pathfinder.sample.common.CountriesLoader
+import za.ampfarisaho.pathfinder.sample.navigation.PathTwo
 
 @HiltViewModel(assistedFactory = PathOneViewModel.Factory::class)
 class PathOneViewModel @AssistedInject constructor(

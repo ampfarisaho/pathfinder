@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "za.ampfarisaho.pathfinder"
+    namespace = "za.ampfarisaho.pathfinder.sample"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "za.ampfarisaho.pathfinder"
+        applicationId = "za.ampfarisaho.pathfinder.sample"
         minSdk = 23
         targetSdk = 36
         versionCode = 1

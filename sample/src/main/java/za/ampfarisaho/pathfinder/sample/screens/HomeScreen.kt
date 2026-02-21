@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.screens
+package za.ampfarisaho.pathfinder.sample.screens
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import za.ampfarisaho.pathfinder.ui.components.ContentBase
+import za.ampfarisaho.pathfinder.sample.ui.components.ContentBase
 
 @Composable
 private fun HomeScreen(buttons: List<HomeButton>) {
