@@ -64,7 +64,7 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
      * Executes one or more navigation commands sequentially.
      *
      * Supports navigation actions like push, pop, replace, clearing the stack,
-     * showing/dismissing dialogs, and launching activity contracts.
+     * showing and/or dismissing dialogs.
      *
      * @param commands Vararg of NavigationCommand instances to execute.
      */
