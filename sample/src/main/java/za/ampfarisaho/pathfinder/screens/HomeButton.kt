@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.sample.screens
+package za.ampfarisaho.pathfinder.screens
 
 data class HomeButton(
     val text: String,

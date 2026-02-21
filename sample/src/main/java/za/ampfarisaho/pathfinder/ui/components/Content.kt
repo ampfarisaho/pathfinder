@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.sample.ui.components
+package za.ampfarisaho.pathfinder.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope

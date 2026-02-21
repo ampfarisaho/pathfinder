@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.ksp)
@@ -7,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "za.ampfarisaho.pathfinder.sample"
+    namespace = "za.ampfarisaho.pathfinder"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "za.ampfarisaho.pathfinder.sample"
+        applicationId = "za.ampfarisaho.pathfinder"
         minSdk = 23
         targetSdk = 36
         versionCode = 1

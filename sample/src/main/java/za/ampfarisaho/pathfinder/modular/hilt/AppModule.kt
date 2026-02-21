@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.sample.injection
+package za.ampfarisaho.pathfinder.modular.hilt
 
 import dagger.Binds
 import dagger.Module
@@ -8,10 +8,10 @@ import dagger.hilt.android.components.ActivityComponent
 import dagger.hilt.android.components.ViewModelComponent
 import za.ampfarisaho.pathfinder.Pathfinder
 import za.ampfarisaho.pathfinder.Router
-import za.ampfarisaho.pathfinder.sample.common.CountriesLoader
-import za.ampfarisaho.pathfinder.sample.common.CountriesLoaderImpl
-import za.ampfarisaho.pathfinder.sample.common.PermissionLookup
-import za.ampfarisaho.pathfinder.sample.common.PermissionLookupImpl
+import za.ampfarisaho.pathfinder.common.CountriesLoader
+import za.ampfarisaho.pathfinder.common.CountriesLoaderImpl
+import za.ampfarisaho.pathfinder.common.PermissionLookup
+import za.ampfarisaho.pathfinder.common.PermissionLookupImpl
 
 @Module
 @InstallIn(

@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.sample
+package za.ampfarisaho.pathfinder
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

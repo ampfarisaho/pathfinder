@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.sample.common
+package za.ampfarisaho.pathfinder.common
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

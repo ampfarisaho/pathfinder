@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.sample.common
+package za.ampfarisaho.pathfinder.common
 
 import android.content.Context
 import android.content.pm.PackageManager

@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.sample.navigation
+package za.ampfarisaho.pathfinder.navigation
 
 import android.content.Context
 import android.content.Intent
@@ -11,14 +11,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import kotlinx.serialization.Serializable
 import za.ampfarisaho.pathfinder.content.ActivityScreen
 import za.ampfarisaho.pathfinder.content.ComposeScreen
-import za.ampfarisaho.pathfinder.sample.screens.HomeScreen
-import za.ampfarisaho.pathfinder.sample.screens.PathOneScreen
-import za.ampfarisaho.pathfinder.sample.screens.PathOneViewModel
-import za.ampfarisaho.pathfinder.sample.screens.PathThreeScreen
-import za.ampfarisaho.pathfinder.sample.screens.PathTwoScreen
-import za.ampfarisaho.pathfinder.sample.screens.ResultPathScreen
-import za.ampfarisaho.pathfinder.sample.screens.SecondActivity
-import za.ampfarisaho.pathfinder.sample.screens.SettingsScreen
+import za.ampfarisaho.pathfinder.screens.HomeScreen
+import za.ampfarisaho.pathfinder.screens.PathOneScreen
+import za.ampfarisaho.pathfinder.screens.PathOneViewModel
+import za.ampfarisaho.pathfinder.screens.PathThreeScreen
+import za.ampfarisaho.pathfinder.screens.PathTwoScreen
+import za.ampfarisaho.pathfinder.screens.ResultPathScreen
+import za.ampfarisaho.pathfinder.screens.SecondActivity
+import za.ampfarisaho.pathfinder.screens.SettingsScreen
 
 abstract class BottomNavScreen : ComposeScreen() {
     abstract val icon: ImageVector

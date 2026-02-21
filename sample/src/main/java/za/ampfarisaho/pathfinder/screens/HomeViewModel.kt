@@ -1,16 +1,16 @@
-package za.ampfarisaho.pathfinder.sample.screens
+package za.ampfarisaho.pathfinder.screens
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import za.ampfarisaho.pathfinder.Router
-import za.ampfarisaho.pathfinder.sample.common.CountriesLoader
-import za.ampfarisaho.pathfinder.sample.navigation.ActivityTwo
-import za.ampfarisaho.pathfinder.sample.navigation.BottomSheet
-import za.ampfarisaho.pathfinder.sample.navigation.PathOne
-import za.ampfarisaho.pathfinder.sample.navigation.ResultPath
-import za.ampfarisaho.pathfinder.sample.navigation.WarningDialog
+import za.ampfarisaho.pathfinder.common.CountriesLoader
+import za.ampfarisaho.pathfinder.navigation.ActivityTwo
+import za.ampfarisaho.pathfinder.navigation.BottomSheet
+import za.ampfarisaho.pathfinder.navigation.PathOne
+import za.ampfarisaho.pathfinder.navigation.ResultPath
+import za.ampfarisaho.pathfinder.navigation.WarningDialog
 import javax.inject.Inject
 import kotlin.random.Random
 

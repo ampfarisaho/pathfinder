@@ -1,4 +1,4 @@
-package za.ampfarisaho.pathfinder.sample.screens
+package za.ampfarisaho.pathfinder.screens
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -13,7 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import za.ampfarisaho.pathfinder.sample.ui.components.ContentBase
+import za.ampfarisaho.pathfinder.ui.components.ContentBase
 
 @Composable
 private fun PathOneScreen(countryName: String, onBack: () -> Unit, onNext: () -> Unit) {
