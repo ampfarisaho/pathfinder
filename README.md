@@ -49,8 +49,8 @@ plugins {
 }
 
 dependencies {
-    implementation("com.github.ampfarisaho:pathfinder:1.0.7")
-    implementation("androidx.navigation3:navigation3-ui:1.0.0-alpha09")
+    implementation("com.github.ampfarisaho:pathfinder:1.0.8")
+    implementation("androidx.navigation3:navigation3-ui:1.0.1")
 }
 ```
 
