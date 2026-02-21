@@ -13,9 +13,10 @@ import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavEntryDecorator
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.scene.Scene
+import androidx.navigation3.scene.SceneStrategy
 import androidx.navigation3.ui.NavDisplay
-import androidx.navigation3.ui.SceneStrategy
-import androidx.navigationevent.NavigationEventSwipeEdge
+import androidx.navigationevent.NavigationEvent
 import za.ampfarisaho.pathfinder.content.ComposeScreen
 
 @Composable
@@ -23,18 +24,19 @@ fun PathFinderNavDisplay(
     modifier: Modifier = Modifier,
     navigator: PathfinderNavigator,
     contentAlignment: Alignment = PathfinderNavDisplayDefaults.contentAlignment,
-    onBack: (Int) -> Unit = { navigator.executeCommands(Back) },
-    entryDecorators: List<NavEntryDecorator<*>> = PathfinderNavDisplayDefaults.entryDecorators(),
+    onBack: () -> Unit = { navigator.executeCommands(Back) },
+    entryDecorators: List<NavEntryDecorator<NavKey>> = PathfinderNavDisplayDefaults.entryDecorators(),
     sceneStrategy: SceneStrategy<NavKey> = PathfinderNavDisplayDefaults.sceneStrategy,
     sizeTransform: SizeTransform? = null,
     transitionSpec: AnimatedContentTransitionScope<*>.() -> ContentTransform =
         PathfinderNavDisplayDefaults.transitionSpec,
     popTransitionSpec: AnimatedContentTransitionScope<*>.() -> ContentTransform =
         PathfinderNavDisplayDefaults.popTransitionSpec,
-    predictivePopTransitionSpec: AnimatedContentTransitionScope<*>.(NavigationEventSwipeEdge) -> ContentTransform =
-        PathfinderNavDisplayDefaults.predictivePopTransitionSpec,
+    predictivePopTransitionSpec: AnimatedContentTransitionScope<Scene<NavKey>>.(
+        @NavigationEvent.SwipeEdge Int,
+    ) -> ContentTransform = PathfinderNavDisplayDefaults.predictivePopTransitionSpec(),
     entryProvider: (key: NavKey) -> NavEntry<NavKey> = PathfinderNavDisplayDefaults.entryProvider,
-    elements: Array<out ComposeScreen>
+    elements: Array<out ComposeScreen>,
 ) {
     if (elements.isEmpty()) {
         throw IllegalStateException(
