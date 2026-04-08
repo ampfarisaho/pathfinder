@@ -116,10 +116,21 @@ class PathfinderNavigator(private val activity: ComponentActivity) : Navigator {
     }
 
     /**
-     * Removes the last screen from the back stack (pop).
-     * Does nothing if the stack is empty.
+     * Removes the top (most recent) screen from the back stack.
+     *
+     * This operation behaves like a "back" navigation, returning to the
+     * previous screen in the stack.
+     *
+     * If the back stack contains only a single entry (i.e. the root screen),
+     * no action is performed. The root screen cannot be removed, as exiting
+     * it should be handled by the system (e.g. closing the app), not by
+     * internal back stack navigation.
      */
     private fun pop() {
+        if (backStackSize == 1) {
+            // Prevent removing the root screen
+            return
+        }
         backStack.removeLastOrNull()
     }
 
