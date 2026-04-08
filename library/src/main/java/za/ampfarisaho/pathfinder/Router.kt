@@ -57,7 +57,10 @@ class Router : BaseRouter() {
     }
 
     /**
-     * Exits the current screen by popping it from the back stack.
+     * Navigates back to the previous screen.
+     *
+     * If the current screen is the root (only entry in the stack),
+     * no action is taken.
      */
     fun exit() {
         executeCommands(Back)
