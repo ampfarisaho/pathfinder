@@ -15,7 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import za.ampfarisaho.pathfinder.PathFinderNavDisplay
+import za.ampfarisaho.pathfinder.ui.PathFinderNavDisplay
 import za.ampfarisaho.pathfinder.Pathfinder
 import za.ampfarisaho.pathfinder.PathfinderNavigator
 import za.ampfarisaho.pathfinder.Router
