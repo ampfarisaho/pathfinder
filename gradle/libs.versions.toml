@@ -10,7 +10,7 @@ kotlin = "2.3.10"
 kotlinSerialization = "2.3.20"
 kotlinxSerializationCore = "1.11.0"
 ksp = "2.2.0-2.0.2"
-navigation3 = "1.0.1"
+navigation3 = "1.1.0"
 lifecycleViewModel = "2.10.0"
 
 [libraries]
