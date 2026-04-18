@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [ "main", "**" ]
+    branches: ["**" ]
   pull_request:
     branches: [ "main" ]
 jobs:
@@ -25,4 +25,4 @@ jobs:
         uses: gradle/wrapper-validation-action@v2
 
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon --stacktrace
